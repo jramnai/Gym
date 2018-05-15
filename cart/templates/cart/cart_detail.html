@@ -1,0 +1,78 @@
+{% extends 'gym/base.html' %}
+
+{% block title %} Cart {% endblock %}
+
+{% block body %}
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">MAGNUM CART</h1>
+     </div>
+</section>
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table">
+                   
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Available</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-right">Remove</th>
+                            <th scope="col" class="text-right">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart.items.all %}
+                        {% with product=item.product %}
+                        <tr>
+                            <td><img src="{{ product.product_image.url }}" class="img-responsive product_image"/> </td>
+                            <td>{{ product.product_name }}</td>
+                            <td>In stock</td>
+                            <td><input class="form-control" type="text" value="1" /></td>
+                            
+                            <td class="text-right">
+                                <a href="{% url 'cart:remove_from_cart' product.id %}">
+                                    <button class="btn btn-sm btn-danger">
+                                        <i class="fa fa-trash"></i> 
+                                    </button> 
+                                </a>
+                            </td>
+                            <td class="text-right">{{ product.product_price }} &#8377;</td>
+                        </tr>
+                         {% endwith %}
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"><strong>Total</strong></td>
+                            <td class="text-right"><strong>346,90 &#8377;</strong></td>
+                        </tr>   
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <a href="{% url 'gym:index' %}" title="Continue Shopping">
+                        <button class="btn btn-lg btn-block btn-primary text-uppercase">Continue Shopping</button>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <a href="#" title="Checkout">
+                        <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

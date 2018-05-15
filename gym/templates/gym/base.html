@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Magnum{% endblock %}</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gym/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy">
+    <link rel="stylesheet" type="text/css" href="{% static 'gym/fontawesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gym/font-icon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gym/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'gym/docs.css' %}">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'gym:index' %}">Magnum</a>
+        </div>
+
+         <!-- Items -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{% url 'gym:index' %}">
+                        <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span>&nbsp; Products
+                    </a>
+                </li>
+            </ul>   
+            
+              
+            <!-- Logout -->
+            <ul class="nav navbar-nav navbar-right">
+
+                <!-- {% if user.is_authenticated %}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICES<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="{% url 'account:logout' %}">Logout</a></li>
+
+                    </ul>
+
+                </li>
+                {% else %}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">SERVICES<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'account:login' %}">Login</a></li>
+                        <li><a href="{% url 'account:signup' %}">Signup</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </li> 
+                {% endif %} -->
+
+                {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav right_side_list">
+                        <li><a href="{% url 'account:detail' %}">My Account</a></li>
+                        <li><a class="btn" href="{% url 'cart:add_to_cart_detail' %}">
+                                <i class="fa fa-shopping-cart"></i> Cart
+                                <span class="badge">3</span>
+                            </a>
+                        </li>
+                        <li><a href="{% url 'account:logout' %}" onclick="myFunction()">Logout</a></li>
+                    </ul>
+                    <script>
+                        function myFunction() {
+                            alert("Successfully Logged out!");
+                        }
+                    </script>
+
+                {% else %}
+                    <li><a href="{% url 'account:login' %}">Log in</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+
+
+ <div class="g-touch" id="world">
+                <div class="container">
+                    <div class="heading">
+                        <h2 class="underline">GET IN TOUCH</h2>
+                        <h2 class="underline"> </h2>
+                    </div>
+
+                    <div class="touch-row">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-data">
+                                    <h2><span class="online">Online</span>Shop</h2>
+                                    <h3>We'd love To Meet You In Person Or Via The Web!</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                    <label class="lb">Main Office</label><span>:123Elm St. NewYork City, NY</span><br>
+                                    <label class="lb">Phone</label><span>:1.555.555.5555</span><br>
+                                    <label class="lb">Email</label><span>:info@yourdomain.com</span>
+                                    <div class="r1">
+                                        <ul>
+                                            <li><a href="#" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Codepen"><i class="fa fa-codepen" aria-hidden="true"></i></a></li>
+                                            <li><a href="#" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <form class="get-form">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="phone" placeholder="Phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control focusedInput" id="subject" placeholder="Subject">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <textarea class="form-control" rows="3" placeholder="Your Message..."></textarea>
+                                        </div>
+                                    </div>
+                                    <a href="#" title="Send"><button type="submit" class="btn btn-default btn-lg">SEND</button></a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        
+        <!-- Footer Start -->
+        <footer id="footer">
+                <h6>&copy; All Rights Reserved | Designed <a href="#" title="DRC Systems">DRC Systems</a></h6>
+        </footer>
+
+
+<script type="text/javascript" src="{% static 'gym/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'gym/jquery-1.11.3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'gym/custom.js' %}"></script>
+</body>
+</html>

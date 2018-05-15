@@ -1,0 +1,30 @@
+{% extends "gym/base.html" %}
+
+{% block title%}Login{% endblock %}
+
+{% block content %}
+
+      <form name = "login_form" action="#" method="post">{% csrf_token %}
+         
+         <div style = "max-width:470px;">
+            <center> 
+               <label>Enter your Name : </label><input type = "text" 
+                  placeholder = "name" name = "username" />
+            </center>
+         </div>
+		
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit" 
+                  value = "Submit" >
+                  <strong>Submit</strong>
+               </button>
+               
+            </center>
+         </div>
+         
+      </form>
+      
+{% endblock %}

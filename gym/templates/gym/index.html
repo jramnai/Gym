@@ -1,0 +1,65 @@
+{% extends 'gym/base.html' %}
+
+{% block body %}
+    <div class="albums-container container-fluid">
+        
+        <!-- Products -->
+        <div class="row">
+            {% if products %}
+                {% for product in products %}
+                    <div class="col-sm-4 col-lg-2">
+                        <div class="thumbnail">
+                            <a href="{% url 'cart:detail' product.id %}" title="{{ product.product_name }}">
+                                <img src="{{ product.product_image.url }}">
+                            </a>
+                            <div class="caption">
+                                <h3>{{ product.product_name }}</h3>
+                                <h4>{{ product.product_price }} &#8377;</h4>
+
+                                <!-- Add to Cart -->
+                                <a href="{% url 'cart:add_to_cart' product.id %}" class="btn btn-primary btn-sm" role="button" title="Add to Cart">
+                                    <span>Add to Cart</span>
+                                </a>
+
+                                <!-- Buy Now -->
+                                <!-- <a href="#" class="btn btn-primary btn-sm" role="button">
+                                    <span>Buy Now</span>
+                                </a> -->
+                                    <a class="add-to-cart" href="#" title="Wishlist">
+                                        <i class="icon fa fa-heart"></i>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                {% if is_paginated %}
+                    <div class="pag_area">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                            {% else %}
+                                <li class="disabled"><span>&laquo;</span></li>
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                            {% else %}
+                                <li class="disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+body {
+    background: white url("images/background.jpg") no-repeat right top;
+}
+
+ul.errorlist {
+    padding-left: 0;
+}
+
+ul.errorlist > li {
+    list-style: none;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-brand {
+    font-family: 'Satisfy', cursive;
+}
+
+.glyphicon-star {
+    color: #cccccc;
+    font-size: 16px;
+}
+
+.glyphicon-star.active {
+    color: #faaf1e;
+}
+
+.table {
+    margin-bottom: 0;
+}
+.caption h3{
+	font-size: 20px;
+}
+.thumbnail a>img{
+    display: block;
+    width:188.66px;
+    height: 172.83px;
+}
+.pag_area{
+	text-align: center;
+    margin: 5px 0px;
+}
+
+.form-data{
+    padding-top: 25px;
+}
+.right_side_list{
+    margin:5px 0px;
+}
+.product_image{
+    height: 50px;
+    width: 50px;
+}

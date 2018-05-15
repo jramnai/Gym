@@ -1,0 +1,14 @@
+{% extends 'gym/base.html' %}
+
+{% block title %} My Profile {% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
